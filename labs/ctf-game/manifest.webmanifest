@@ -1,7 +1,7 @@
 {
-  "name": "Unauthenticated API Token Exposure CTF",
+  "name": "Unauthenticated API Token Exposure Simulation",
   "short_name": "unauthentica",
-  "description": "CTF lab for Unauthenticated API Token Exposure",
+  "description": "Realistic CTF simulation for Unauthenticated API Token Exposure",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#070b16",

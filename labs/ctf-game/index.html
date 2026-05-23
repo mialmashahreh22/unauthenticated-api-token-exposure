@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#0f172a">
-  <title>Unauthenticated API Token Exposure CTF Lab</title>
+  <title>Unauthenticated API Token Exposure - Realistic CTF Simulation</title>
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="assets/ctf-icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -13,46 +13,58 @@
   <main class="app">
     <section class="hero">
       <div>
-        <p class="eyebrow">Bug Report CTF</p>
+        <p class="eyebrow">Realistic Bug Simulation</p>
         <h1>Unauthenticated API Token Exposure</h1>
-        <p class="lede">An API endpoint returns credential-like access and refresh tokens without authentication.</p>
+        <p class="lede">Call the mock credentials endpoint while logged out and inspect the sensitive response.</p>
       </div>
-      <div class="terminal" aria-label="Mock lab terminal">
+      <div class="terminal">
         <div class="bar"><span></span><span></span><span></span></div>
-        <pre><code id="terminal-code">loading mock scenario...</code></pre>
-        <div class="scan"></div>
+        <pre><code id="event-log">Lab booted. Interact with the mock app to find the bug.</code></pre>
       </div>
     </section>
 
     <section class="hud">
-      <div><span>Score</span><strong id="score">0</strong></div>
-      <div><span>Lives</span><strong id="lives">3</strong></div>
-      <div><span>Mission</span><strong><span id="mission">1</span>/3</strong></div>
       <div><span>Severity</span><strong>Critical</strong></div>
+      <div><span>Mode</span><strong>Mock App</strong></div>
+      <div><span>Status</span><strong id="status">Hunting</strong></div>
+      <div><span>Flag</span><strong id="flag-state">Locked</strong></div>
     </section>
 
     <section class="layout">
       <article class="card">
-        <p id="type" class="pill">Sensitive Data Exposure / Missing Authentication</p>
-        <h2 id="question">Question</h2>
-        <pre class="snippet"><code id="snippet"></code></pre>
-        <div id="choices" class="choices"></div>
-        <div class="actions">
-          <button id="hint" class="ghost" type="button">Hint</button>
-          <button id="next" class="primary" type="button" disabled>Next</button>
+        <div class="card-head">
+          <p class="pill">Goal</p>
+          <h2>Find the unauthenticated token exposure.</h2>
+          <p class="muted">Everything here is local mock data. No real target is contacted.</p>
         </div>
-        <p id="feedback" class="feedback" aria-live="polite"></p>
+        <div id="lab-root"></div>
       </article>
 
       <aside class="card intel">
         <h2>Analyst Notes</h2>
-        <p><strong>Expected:</strong> Credential endpoints must require authentication, authorization, strict scopes, and minimal responses.</p>
-        <p><strong>Actual:</strong> A public endpoint returns token-like fields and internal metadata.</p>
-        <p>Complete the missions to reveal the flag.</p>
+        <p><strong>Expected:</strong> Credential endpoints should require authentication and return minimal data.</p>
+        <p><strong>Actual:</strong> The mock endpoint returns access and refresh tokens to anonymous visitors.</p>
+        <p class="muted">When you reproduce the vulnerable behavior, the flag unlocks.</p>
         <div id="flag" class="flag hidden"></div>
       </aside>
     </section>
   </main>
+  <script>
+    window.CTF_SCENARIO = {
+  "slug": "unauthenticated-api-token-exposure",
+  "title": "Unauthenticated API Token Exposure",
+  "kind": "tokenExposure",
+  "severity": "Critical",
+  "flag": "FLAG{TOKEN_ENDPOINTS_MUST_REQUIRE_AUTHENTICATION}",
+  "brief": "Call the mock credentials endpoint while logged out and inspect the sensitive response.",
+  "goal": "Find the unauthenticated token exposure.",
+  "expected": "Credential endpoints should require authentication and return minimal data.",
+  "actual": "The mock endpoint returns access and refresh tokens to anonymous visitors.",
+  "seed": {
+    "endpoint": "/beefree-editor/credentials"
+  }
+};
+  </script>
   <script src="app.js"></script>
 </body>
 </html>

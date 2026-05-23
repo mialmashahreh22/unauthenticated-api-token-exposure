@@ -2,8 +2,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Bug_Report-Cybersecurity-0078D4?style=for-the-badge" alt="Bug Report">
-  <img src="https://img.shields.io/badge/CTF_Lab-Playable-22C55E?style=for-the-badge" alt="CTF Lab">
-  <img src="https://img.shields.io/badge/Category-Sensitive_Data_Exposure_%2F_Missing_Authentication-F97316?style=for-the-badge" alt="Sensitive Data Exposure / Missing Authentication">
+  <img src="https://img.shields.io/badge/CTF_Lab-Realistic_Simulation-22C55E?style=for-the-badge" alt="Realistic CTF Simulation">
   <img src="https://img.shields.io/badge/Severity-Critical-DC2626?style=for-the-badge" alt="Critical">
 </p>
 
@@ -11,21 +10,11 @@
 
 ## Overview
 
-An API endpoint returns credential-like access and refresh tokens without authentication.
+Call the mock credentials endpoint while logged out and inspect the sensitive response.
 
-This repository is a **sanitized educational case study**. It does not target a real company or live system. The included lab uses mock data so students can safely understand the bug class.
+This repository is a **sanitized educational case study**. It does not target a real company or live system. The CTF lab is a mock vulnerable app where the flag unlocks only after reproducing the simulated bug.
 
-## Quick Facts
-
-| Field | Value |
-|---|---|
-| Category | Sensitive Data Exposure / Missing Authentication |
-| Severity | Critical |
-| Related CWE | CWE-200: Exposure of Sensitive Information to an Unauthorized Actor |
-| Lab | Browser-based CTF |
-| Flag Style | `FLAG{...}` |
-
-## Play the CTF Lab
+## Play the CTF Simulation
 
 Run locally:
 
@@ -39,7 +28,15 @@ Open:
 http://localhost:8000/labs/ctf-game/
 ```
 
-Goal: solve the three missions and reveal the flag.
+GitHub Pages:
+
+```text
+https://mialmashahreh22.github.io/unauthenticated-api-token-exposure/labs/ctf-game/
+```
+
+## What You Must Do
+
+Find the unauthenticated token exposure.
 
 ## Report
 
@@ -48,12 +45,6 @@ Read the full report:
 ```text
 report/BUG-REPORT.md
 ```
-
-## Impact Summary
-
-- Attackers may gain access to protected services depending on token scope.
-- Refresh tokens may allow continued access.
-- Internal user or app metadata can leak.
 
 ## Repository Structure
 
